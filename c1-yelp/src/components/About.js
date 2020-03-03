@@ -16,31 +16,31 @@ class About extends React.Component
                <h6>
                     Get started by making specifying giving us some information about your ideal dining expirience in <b>3 simple steps</b>.
                 </h6>
-                <div class = "row">
+                <div className = "row">
 
 
-                        <div class="card border-primary col-lg-4" >
-                            <div class="card-header">Causal, Date, or Takeout</div>
-                                <div class="card-body">
+                        <div className="card border-primary col-lg-4" >
+                            <div className="card-header">Causal, Date, or Takeout</div>
+                                <div className="card-body">
                                 <img src={dindin} style={iconStyle} alt="header" />
                         </div>                      
                     </div>
 
-                    <div class="card border-primary col-lg-4" >
-                            <div class="card-header">Kind of Food</div>
-                                <div class="card-body">
+                    <div className="card border-primary col-lg-4" >
+                            <div className="card-header">Kind of Food</div>
+                                <div className="card-body">
                                 <img src={drinkfood} style={iconStyle} alt="header" />
                         </div>                      
                     </div>
-                    <div class="card border-primary col-lg-4" >
-                            <div class="card-header">Price Range</div>
-                                <div class="card-body">
+                    <div className="card border-primary col-lg-4" >
+                            <div className="card-header">Price Range</div>
+                                <div className="card-body">
                                 <img src={money} style={iconStyle} alt="header" />
                         </div>                      
                     </div>
                 </div>
-                <div class="card-header text-white bg-primary mb-3" >
-  <div class="card-body">
+                <div className="card-header text-white bg-primary mb-3" >
+  <div className="card-body">
    
 
   </div> </div>
