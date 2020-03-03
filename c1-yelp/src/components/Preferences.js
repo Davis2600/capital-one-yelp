@@ -1,7 +1,9 @@
 import React from 'react';
 import 'bootswatch/dist/minty/bootstrap.min.css';
 
-const GOOGLE_API_KEY = "AIzaSyA3KgV1M4uOUMSbBe0qSNy8FTkPOc14QYM";
+
+var GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+console.log(GOOGLE_API_KEY);
 class Preferences extends React.Component 
 {
     constructor(props){

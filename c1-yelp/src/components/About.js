@@ -4,6 +4,7 @@ import top from './headersnag.png';
 import dindin from './table.png'
 import drinkfood from './drinkfood.png';
 import money from './moneyicon.png'
+
 class About extends React.Component
 {
    render(){

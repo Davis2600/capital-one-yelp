@@ -2,24 +2,24 @@ import React from 'react';
 import 'bootswatch/dist/minty/bootstrap.min.css';
 import './App.css';
 import Header from './components/Header';
-import About from './components/About'
+import About from './components/About';
+import Preferences from './components/Preferences';
 
-function App() {
-  return (
-    <div className="App">
-      <Header/>
-      <About />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+class App extends React.Component {
 
-    </div>
-  );
+
+  render() {
+    return (
+      <div className="App">
+        <Header/>
+        <About />
+        <Preferences />
+
+  
+      </div>
+    );
+  }
+
 }
 
 export default App;
