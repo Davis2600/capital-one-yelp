@@ -1,10 +1,8 @@
 import React from 'react';
 import 'bootswatch/dist/minty/bootstrap.min.css';
 import RestaurantMap from './RestaurantMap';
+import propTypes from 'prop-types';
 
-
-const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
-//remove location map from showing up when we get location data.
 
 class Preferences extends React.Component 
 {
@@ -14,21 +12,22 @@ class Preferences extends React.Component
         this.state = {
           latitude: null,
           longitude: null, 
-          userAddress : null,
-          pricePreference : null,
+          pricePreference : 1,
           foodPreference : null,
-          mealType : null
+          mealType : null,
+          locationStatus: 'notfound'
         };
         this.getLocation = this.getLocation.bind(this);
         this.locationIndicator = this.locationIndicator.bind(this);
         this.getCoordinates = this.getCoordinates.bind(this); 
-        this.getUserAddress = this.getUserAddress.bind(this);
         this.setPreference = this.setPreference.bind(this);
-        this.doYelpCall = this.doYelpCall.bind(this);
+        this.onSendPrefs = this.onSendPrefs.bind(this);
+
+    
+  
 
     }
     getLocation() {
-        console.log(this.state.userAddress);
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(this.getCoordinates, this.handleLocationError);
         } else {
@@ -41,8 +40,6 @@ class Preferences extends React.Component
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
     });
-    this.getUserAddress();
-
     }
 
     handleLocationError(error){
@@ -65,19 +62,10 @@ class Preferences extends React.Component
     }
 
     locationIndicator(){
-        console.log(this.state.userAddress != null ? "btn btn-primary" : "btn btn-warning");
-        return this.state.userAddress != null ? "btn btn-primary" : "btn btn-warning";
+        return this.state.latitude && this.state.longitude ? "btn btn-primary" : "btn btn-warning";
     }
 
-    getUserAddress() {
-        console.log(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&sensor=false&&key=${GOOGLE_API_KEY}`);
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${this.state.latitude},${this.state.longitude}&sensor=false&&key=${GOOGLE_API_KEY}`)
-        .then(response => response.json())
-        .then(data => this.setState({
-            userAddress: data.results[0].formatted_address
-        }))
-        .catch(error => alert(error));
-    }
+
 
     setPreference(field, event){
         let selected = event.target.value;
@@ -87,21 +75,23 @@ class Preferences extends React.Component
         console.log(field, selected);
     }
 
-    doYelpCall(){
-        let doCall = true;
-        if(!this.state.latitude || !this.state.longitude ){
-            doCall = false;
-            alert("Please share location data to get restaurant suggestions!");
-        }else if(!this.state.foodPreference){
-            doCall = false;
-            alert("Please select a type of food to get restaurant suggestions!");
-        }else if(!this.state.mealType){
-            doCall = false;
-            alert("Please select a dining option to get restaurant suggestions!");
-        }
-        console.log(doCall);
+    onSendPrefs(){
         
+        if(!this.state.latitude || !this.state.longitude ){
+            alert("Please share location data to get restaurant suggestions!");
+            return;
+        }else if(!this.state.foodPreference){
+            alert("Please select a type of food to get restaurant suggestions!");
+            return;
+        }else if(!this.state.mealType){
+            alert("Please select a dining option to get restaurant suggestions!");
+            return;
+        }
+
+        var preferenceData = [this.state.latitude, this.state.longitude, this.state.pricePreference, this.state.mealType, this.state.foodPreference];
+        this.props.sendPrefs(preferenceData);
     }
+ 
 
     render(){
         return(
@@ -109,21 +99,23 @@ class Preferences extends React.Component
                 <h2>Find Food!</h2>
                 <select className="custom-select" onChange={event => this.setPreference('mealType',event)}>
                     <option defaultValue="">Select a Dining Option</option>
-                    <option value="Date">Date Night</option>
-                    <option value="Casual">Casual Meal</option>
-                    <option value="Takeout">Takeout, please!</option>
+                    <option value="date+night">Date Night</option>
+                    <option value="quick+meal">Casual</option>
+                    <option value="takeout">Takeout, please!</option>
                 </select>
                 <p style = {babySpacing}></p>
                 <select className="custom-select" onChange={event => this.setPreference('foodPreference', event)} >
                     <option defaultValue="">Select a Type of Food</option>
-                    <option value="American">American</option>
-                    <option value="Sushi">Sushi</option>
-                    <option value="Chinese">Chinese</option>
-                    <option value="Indian">Indian</option>
-                    <option value="Korean">Korean</option>
-                    <option value="Pizza">Pizza</option>
-                    <option value="Coffee">Coffee</option>
-                    <option value="Sandwiches">Sandwiches</option>
+                    <option value="all">All Categories</option>
+                    <option value="newamerican,tradamerican,burgers">American</option>
+                    <option value="sushi">Sushi</option>
+                    <option value="chinese">Chinese</option>
+                    <option value="indpak">Indian</option>
+                    <option value="korean">Korean</option>
+                    <option value="pizza">Pizza</option>
+                    <option value="coffee">Coffee</option>
+                    <option value="sandwiches">Sandwiches</option>
+                    <option value="seafood">Seafood</option>
                 </select>
                 <p style = {babySpacing}></p>
                 <div className = "row">
@@ -150,30 +142,22 @@ class Preferences extends React.Component
                     <div className="col">
                
                     <h6>Location:  </h6> 
-                        <button type="button" className={this.locationIndicator()} onClick={this.getLocation}>Share Location Data</button>
-                        {
-                            this.state.userAddress != null ?
-                            <h4>Got Address!</h4>
-                            :
-                            null
-                        }
+                        <button type="button" className={this.locationIndicator()} onClick={this.getLocation}>
+                           Share Current Location
+                        
+                        </button>
+
                     </div>
                 </div>
 
             
             
             <p></p>
-            <button type="submit" className="btn btn-primary btn-lg" onClick={this.doYelpCall}>Get Results!</button>
+            <button type="submit" className="btn btn-primary btn-lg" onClick={this.onSendPrefs.bind(this)}>Get Results!</button>
             <p style = {babySpacing}></p>
-            {
-                this.state.latitude && this.state.longitude ?
-                
-                    <RestaurantMap user={[this.state.latitude, this.state.longitude]}/>
-                :
-                null
-            }
+
+            </div>
             
-        </div>
         
         )
     }   
@@ -195,3 +179,8 @@ const mapStyles = {
     width: '100%',
     height: '100%',
   };
+
+  Preferences.propTypes = {
+    //array [0] lattitue [1] longitude
+    sendPrefs: propTypes.func.isRequired,
+  }
