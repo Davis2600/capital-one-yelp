@@ -2,25 +2,25 @@ import React from 'react';
 import 'bootswatch/dist/minty/bootstrap.min.css';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import propTypes from 'prop-types';
+import personpng from './person.png';
 
 class RestaurantMap extends React.Component{
-    constructor(props){
-      super(props);
-      this.state = {
-        user: props.user
-      }
-
-    }
+    
     render() {
+        var restaurantsToDisplay = this.props.restaurants;
+        var markerList = restaurantsToDisplay.map((restaurant) => {
+            return  <Marker position={{ lat: restaurant.coordinates.latitude, 
+                                        lng:  restaurant.coordinates.longitude, }} />
+        });
         return (
             <Map
             google={this.props.google}
             zoom={8}
             style={mapStyles}
-            initialCenter={{ lat: this.state.user[0], lng: this.state.user[1]}}
+            initialCenter={{ lat: this.props.lat, lng: this.props.lng}}
           >
-            <Marker position={{ lat: this.state.user[0], lng: this.state.user[1]}} />
-            
+            <Marker position={{ lat: this.props.lat, lng: this.props.lng}} />
+            {markerList}
           </Map>
         );
     }
@@ -28,10 +28,10 @@ class RestaurantMap extends React.Component{
 
 
 RestaurantMap.propTypes = {
-  //array [0] lattitue [1] longitude
-  user: propTypes.array.isRequired,
-  //array with restaurant objects that contain latitude and longitude, not built yet
-  restaurants: propTypes.func.isRequired
+  lat: propTypes.any.isRequired,
+  lng: propTypes.any.isRequired,
+  //array with restaurant objects that contain latitude and longitude
+  restaurants: propTypes.array.isRequired
 }
 
 
@@ -40,8 +40,8 @@ export default GoogleApiWrapper({
   })(RestaurantMap);
 
 const mapStyles = {
-    width: '70%',
+    width: '80%',
     height: '50%',
     padding: '2rem',
-    margin: 'auto'
+    margin: '1rem'
   };

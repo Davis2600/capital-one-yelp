@@ -72,7 +72,6 @@ class Preferences extends React.Component
         this.setState({
             [field] : selected,
         });
-        console.log(field, selected);
     }
 
     onSendPrefs(){
@@ -107,10 +106,9 @@ class Preferences extends React.Component
                 <select className="custom-select" onChange={event => this.setPreference('foodPreference', event)} >
                     <option defaultValue="">Select a Type of Food</option>
                     <option value="all">All Categories</option>
-                    <option value="newamerican,tradamerican,burgers">American</option>
+                    <option value="burgers">Burgers</option>
                     <option value="sushi">Sushi</option>
                     <option value="chinese">Chinese</option>
-                    <option value="indpak">Indian</option>
                     <option value="korean">Korean</option>
                     <option value="pizza">Pizza</option>
                     <option value="coffee">Coffee</option>
@@ -175,12 +173,8 @@ const babySpacing = {
 
 };
 
-const mapStyles = {
-    width: '100%',
-    height: '100%',
-  };
 
-  Preferences.propTypes = {
-    //array [0] lattitue [1] longitude
+Preferences.propTypes = {
+    //function to lift the preferences up
     sendPrefs: propTypes.func.isRequired,
-  }
+}

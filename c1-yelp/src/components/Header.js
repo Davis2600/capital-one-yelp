@@ -9,7 +9,7 @@ function Header() {
           <div className="bs-component">
                   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                     <img src={logo} style={imageStyle} alt="logo" />
-                    <a className="navbar-brand" href="google.com">  EZ YELP BAYBEE</a>
+                    <a className="navbar-brand" href="google.com">  EZ YELP</a>
 
     
                    
