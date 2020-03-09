@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/c1-yelp/static/css/main.d1b05096.chunk.css",
-    "main.js": "/c1-yelp/static/js/main.b8655ae3.chunk.js",
-    "main.js.map": "/c1-yelp/static/js/main.b8655ae3.chunk.js.map",
-    "runtime-main.js": "/c1-yelp/static/js/runtime-main.716da44f.js",
-    "runtime-main.js.map": "/c1-yelp/static/js/runtime-main.716da44f.js.map",
-    "static/css/2.6adc84a7.chunk.css": "/c1-yelp/static/css/2.6adc84a7.chunk.css",
-    "static/js/2.c65383ce.chunk.js": "/c1-yelp/static/js/2.c65383ce.chunk.js",
-    "static/js/2.c65383ce.chunk.js.map": "/c1-yelp/static/js/2.c65383ce.chunk.js.map",
-    "index.html": "/c1-yelp/index.html",
-    "precache-manifest.a6244c25ebd31224c1381a79f419a4e8.js": "/c1-yelp/precache-manifest.a6244c25ebd31224c1381a79f419a4e8.js",
-    "service-worker.js": "/c1-yelp/service-worker.js",
-    "static/css/2.6adc84a7.chunk.css.map": "/c1-yelp/static/css/2.6adc84a7.chunk.css.map",
-    "static/css/main.d1b05096.chunk.css.map": "/c1-yelp/static/css/main.d1b05096.chunk.css.map",
-    "static/js/2.c65383ce.chunk.js.LICENSE.txt": "/c1-yelp/static/js/2.c65383ce.chunk.js.LICENSE.txt",
-    "static/media/drinkfood.png": "/c1-yelp/static/media/drinkfood.fb499c44.png",
-    "static/media/headersnag.png": "/c1-yelp/static/media/headersnag.882da089.png",
-    "static/media/moneyicon.png": "/c1-yelp/static/media/moneyicon.64f23161.png",
-    "static/media/sitelogo.png": "/c1-yelp/static/media/sitelogo.630d96bb.png"
+    "main.css": "/capital-one-yelp/static/css/main.d1b05096.chunk.css",
+    "main.js": "/capital-one-yelp/static/js/main.2bc2d28f.chunk.js",
+    "main.js.map": "/capital-one-yelp/static/js/main.2bc2d28f.chunk.js.map",
+    "runtime-main.js": "/capital-one-yelp/static/js/runtime-main.406f64fd.js",
+    "runtime-main.js.map": "/capital-one-yelp/static/js/runtime-main.406f64fd.js.map",
+    "static/css/2.6adc84a7.chunk.css": "/capital-one-yelp/static/css/2.6adc84a7.chunk.css",
+    "static/js/2.c65383ce.chunk.js": "/capital-one-yelp/static/js/2.c65383ce.chunk.js",
+    "static/js/2.c65383ce.chunk.js.map": "/capital-one-yelp/static/js/2.c65383ce.chunk.js.map",
+    "index.html": "/capital-one-yelp/index.html",
+    "precache-manifest.1c03c57f50705c4cedcfaea8fc58b09a.js": "/capital-one-yelp/precache-manifest.1c03c57f50705c4cedcfaea8fc58b09a.js",
+    "service-worker.js": "/capital-one-yelp/service-worker.js",
+    "static/css/2.6adc84a7.chunk.css.map": "/capital-one-yelp/static/css/2.6adc84a7.chunk.css.map",
+    "static/css/main.d1b05096.chunk.css.map": "/capital-one-yelp/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.c65383ce.chunk.js.LICENSE.txt": "/capital-one-yelp/static/js/2.c65383ce.chunk.js.LICENSE.txt",
+    "static/media/drinkfood.png": "/capital-one-yelp/static/media/drinkfood.fb499c44.png",
+    "static/media/headersnag.png": "/capital-one-yelp/static/media/headersnag.882da089.png",
+    "static/media/moneyicon.png": "/capital-one-yelp/static/media/moneyicon.64f23161.png",
+    "static/media/sitelogo.png": "/capital-one-yelp/static/media/sitelogo.630d96bb.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.716da44f.js",
+    "static/js/runtime-main.406f64fd.js",
     "static/css/2.6adc84a7.chunk.css",
     "static/js/2.c65383ce.chunk.js",
     "static/css/main.d1b05096.chunk.css",
-    "static/js/main.b8655ae3.chunk.js"
+    "static/js/main.2bc2d28f.chunk.js"
   ]
 }
